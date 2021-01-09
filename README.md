@@ -1,6 +1,8 @@
 # fileman-go-fp
 
-##Partial Application functional programming concept
+You can find the following functional programming concepts in the code.
+
+## Partial Application 
 
 The following function implements the Partial Application functional programming
 concept. In this case it makes it possible to optimize out the
