@@ -5,8 +5,9 @@ import (
 	"testing"
 )
 
-func Test_cd(t *testing.T) {
-	dirs := []string{".", ".idea", ".idea/.gitignore", ".idea/fileman.iml", ".idea/modules.xml", ".idea/workspace.xml", "cd.go", "cd_test.go", "go.mod"}
+var dirs = []string{".", ".idea", ".idea/.gitignore", ".idea/fileman.iml", ".idea/modules.xml", ".idea/workspace.xml", "cd.go", "cd_test.go", "go.mod"}
+
+func Test_FindPath(t *testing.T) {
 
 	tests := []struct {
 		pattern string
@@ -22,5 +23,18 @@ func Test_cd(t *testing.T) {
 			got := makeCalcList(tt.pattern)(dirs)
 			assert.ElementsMatch(t, tt.want, got)
 		})
+	}
+}
+
+func BenchmarkFindPath(t *testing.B) {
+	for n := 0; n < t.N; n++ {
+		makeCalcList("a/o")(dirs)
+	}
+}
+
+func BenchmarkFindPathOptimized(t *testing.B) {
+	calcList := makeCalcList("a/o")
+	for n := 0; n < t.N; n++ {
+		calcList(dirs)
 	}
 }

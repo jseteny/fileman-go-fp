@@ -29,7 +29,10 @@ func makeCalcList(path string) func(dirs []string) []string {
 }
 ```
 
-You can use it this way
+You can use it in an optimised way doing 
+the Partial Application outside the loop 
+and calling the Partially Applied function
+inside the loop.
 
 ```go
 calcList := makeCalcList(pattern)
