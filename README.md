@@ -47,7 +47,7 @@ func BenchmarkFindPathOptimized(t *testing.B) {
 
 or using the following short hand form
 
-```
+```go
 func BenchmarkFindPath(t *testing.B) {
 	for n := 0; n < t.N; n++ {
 		makeCalcList("a/o")(dirs)
